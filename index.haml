@@ -1,0 +1,18 @@
+!!!5
+%html
+  %head
+    %title Punch clock
+    %link{rel: "stylesheet", href: "resources/css/style.css", type: "text/css"}
+  %body
+    .page
+      .window
+        %h1 Punch clock
+        %h3 keeping track
+        %h2.push-clock 0
+        .controls
+          %a.button#checkin{href: "#check-in"}
+            %i.icon-time
+            Check in
+          %a#checkout.button.disabled.hidden{href: "#check-out"} Check out
+
+    %script{:type => "text/javascript", :'data-main' => "js/defaults", :src => "js/require.js"}
