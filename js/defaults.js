@@ -17,7 +17,15 @@ require.config({
   }
 });
 
-require(["services/time_span_service","presenters/time_presenter", "views/check_in_view"], function(TimeSpanService, TimePresenter, CheckinView){
+require(["services/time_span_service",
+         "presenters/time_presenter", 
+         "views/check_in_view",
+         "views/status_view"], 
+      function(
+         TimeSpanService, 
+         TimePresenter, 
+         CheckinView,
+         StatusView){
   var domNText = function(elm, text){
     var element = document.createElement(elm);
     var elementText = document.createTextNode(text);
@@ -49,11 +57,8 @@ require(["services/time_span_service","presenters/time_presenter", "views/check_
     }
   }
   var service = TimeSpanService.create();
-  service.addNew(); 
-  service.addNew(); 
-  service.first().start().subtract(1, "days");
-  service.first().end(service.first().start().clone().add("hours",2));
   //Print it
   //printData(service);
+  var status_view =  StatusView.create(service);
   var checkin_view =  CheckinView.create(service);
 });

@@ -5,6 +5,8 @@ require.config({
     "models/time_span": "../js/models/time_span",
     "services/time_span_service": "../js/services/time_span_service",
     "presenters/time_presenter": "../js/presenters/time_presenter",
+    "util/util": "../js/util/util",
+    "util/dom": "../js/util/dom"
   }
 });
 

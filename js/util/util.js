@@ -1,4 +1,10 @@
-var _ = simpleDash = (function(){
+
+/**
+ * Offers convinience methods:
+ *  - each: loops over array and calls function
+ *  - observable: creates an observer 
+ */
+define(function(){
   var each = function(elements, fn){
     for(var i = 0; i < elements.length; i++){
       //Call function with args (element, index)
@@ -33,5 +39,4 @@ var _ = simpleDash = (function(){
     each: each,
     observable: observable
   };
-
-})();
+});

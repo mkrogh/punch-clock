@@ -1,11 +1,12 @@
 
-define(["models/time_span"],function(time_span){
+define(["models/time_span", "util/util"],function(time_span, _){
   return {
     /**
      * Creates a new TimeSpanService.
      */
     create: function(){
       var time_spans = [];
+      var add_observer = _.observable();
 
       /**
        * Gets the current number of elements in the serivce.
@@ -24,6 +25,7 @@ define(["models/time_span"],function(time_span){
         var result = count();
         if(time_spans.indexOf(time_span) === -1){
           result =  time_spans.push(time_span);
+          add_observer.notify(time_span);
         }
         return result;
       }  
@@ -72,7 +74,8 @@ define(["models/time_span"],function(time_span){
         remove: remove,
         first: first,
         last: last,
-        count: count
+        count: count,
+        track_add: add_observer.add
       }
     }//END create
   }//END return

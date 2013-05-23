@@ -1,10 +1,12 @@
 /**
  * Represents a TimeSpan.
  */
-define(["moment"],function(moment){
+define(["moment", "util/util"],function(moment,_){
 
   var create = function(){
     var _start, _end;
+    var checkin_observer = _.observable();
+    var checkout_observer = _.observable();
     
     _start = moment();
 
@@ -52,8 +54,9 @@ define(["moment"],function(moment){
       return result;
     }
 
-    var checkOut = function(checkout){
-      end(checkOut || moment());
+    var checkOut = function(time_stamp){
+      end(time_stamp || moment());
+      checkout_observer.notify(this);
     }
 
     return {
@@ -61,7 +64,9 @@ define(["moment"],function(moment){
       end: end,
       checkOut: checkOut,
       duration: duration,
-      toString: toString
+      toString: toString,
+      trackCheckin: checkin_observer.add,
+      trackCheckout: checkout_observer.add
     }
   };
 
