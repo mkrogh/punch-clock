@@ -2,8 +2,8 @@
 define(["util/dom","presenters/time_presenter"],function($,TimePresent){
   
   return {
-    create: function(service){
-      var view = $(".punch-clock")[0];
+    create: function(service, root){
+      var view = $(".punch-clock", root)[0];
       var timer;
 
       var handleCheckin = function(time_span){

@@ -11,9 +11,9 @@ define(["util/dom"], function($){
     }
   }
   return {
-    create: function(service){
-      var checkin_btn =  $("#checkin")[0];
-      var checkout_btn =  $("#checkout")[0];
+    create: function(service, root){
+      var checkin_btn =  $("#check-in", root)[0];
+      var checkout_btn =  $("#check-out", root)[0];
 
       var checkin = function(e){
         e.preventDefault();
@@ -27,7 +27,7 @@ define(["util/dom"], function($){
 
       var checkout = function(e) {
         e.preventDefault();
-        service.first().checkOut();
+        service.last().checkOut();
 
         removeClass(checkin_btn, "hidden");
         addClass(checkout_btn, "hidden");
