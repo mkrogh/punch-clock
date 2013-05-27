@@ -1,16 +1,3 @@
-
-(function(){
-  var disable = document.querySelectorAll(".button")
-
-  for(var i=0; i < disable.length; i++){
-    disable[i].addEventListener("click", function(e){
-      if(this.className.indexOf("disabled") !== -1){
-        e.preventDefault();
-      }
-    });
-  }
-})();
-
 require.config({
   paths: {
     "moment": "moment.min",
