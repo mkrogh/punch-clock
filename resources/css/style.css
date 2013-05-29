@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway:500);
+@import url(normalize.css);
 table {
   width: 100%;
   border-collapse: collapse;
@@ -52,6 +53,7 @@ small {
   box-shadow: none;
   background-image: none; }
 
+/* Icons */
 [class^="icon-"], [class*=" icon-"] {
   width: 14px;
   height: 14px;
@@ -65,11 +67,15 @@ small {
 .icon-time {
   background-position: -48px -24px; }
 
+/* END icons */
+.page {
+  margin: 10px auto;
+  max-width: 350px;
+  padding: 0 20px; }
+
 .window {
   background: #f9f9f9;
-  margin: 10px auto;
   border-radius: 4px;
-  width: 80%;
   padding: 20px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6); }
 
