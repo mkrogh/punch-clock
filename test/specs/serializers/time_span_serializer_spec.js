@@ -22,8 +22,8 @@ define(["models/time_span","moment","serializers/time_span_serializer"], functio
           var json_output = JsonSerializer.serialize(time_span);
           var object = JSON.parse(json_output);
 
-          expect(object.time_span.start).toEqual("2013-05-28T15:20:00.000Z");
-          expect(object.time_span.end).toEqual("2013-05-29T15:20:00.000Z");
+          expect(object.time_span.start).toEqual("2013-05-28T13:20:00.000Z");
+          expect(object.time_span.end).toEqual("2013-05-29T13:20:00.000Z");
         });
       });//END complete
     });//END serialie
@@ -40,11 +40,11 @@ define(["models/time_span","moment","serializers/time_span_serializer"], functio
           });
           
           it("start should be the same", function(){
-            expect(deserialized.start()).toEqual(time_span.start());
+            expect(deserialized.start().isSame(time_span.start()));
           });
           
           it("end should be the same", function(){
-            expect(deserialized.end()).toEqual(time_span.end());
+            expect(deserialized.end().isSame(time_span.end()));
           });
 
         });//END serialized

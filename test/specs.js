@@ -18,7 +18,7 @@ var specs = [
   "specs/time_span_specs",
   "specs/services/time_span_service_specs",
   "specs/presenters/time_presenter_specs",
-  "specs/presenters/json_presenter_specs",
+  "specs/serializers/time_span_serializer_spec",
   "specs/views/check_in_view_specs",
   "specs/views/status_view_specs",
   "specs/util/dom_creator_specs",

@@ -1,10 +1,15 @@
 
 define(["models/time_span", "moment"], function(TimeSpan, moment){
+  var fix_timezone_bug = function(time){
+    var result = time.clone();
+    result.add(time.zone(), "minutes");
+    return result;
+  }
   var serialize_time_span = function(time_span){
       var result = {
         time_span: {
-          start: time_span.start(),
-          end: time_span.end()
+          start: fix_timezone_bug(time_span.start()),
+          end: fix_timezone_bug(time_span.end())
         }
       }
     return JSON.stringify(result);
