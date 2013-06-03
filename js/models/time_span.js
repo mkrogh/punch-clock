@@ -7,12 +7,14 @@ define(["moment", "util/util"],function(moment,_){
     var _start, _end;
     var checkin_observer = _.observable();
     var checkout_observer = _.observable();
+    var change_observer = _.observable();
     
     _start = moment();
 
     var start = function(start){
       if(start){
-        _start = start
+        _start = start;
+        change_observer.notify(this);
       }
       return _start;
     }
@@ -20,6 +22,7 @@ define(["moment", "util/util"],function(moment,_){
     var end = function(end){
       if(end){
         _end = end
+        change_observer.notify(this);
       }
       return _end;
     }
@@ -55,7 +58,8 @@ define(["moment", "util/util"],function(moment,_){
     }
 
     var checkOut = function(time_stamp){
-      end(time_stamp || moment());
+      //this used to preserve contex
+      this.end(time_stamp || moment());
       checkout_observer.notify(this);
     }
 
@@ -66,7 +70,8 @@ define(["moment", "util/util"],function(moment,_){
       duration: duration,
       toString: toString,
       trackCheckin: checkin_observer.add,
-      trackCheckout: checkout_observer.add
+      trackCheckout: checkout_observer.add,
+      trackChange: change_observer.add
     }
   };
 

@@ -4,6 +4,7 @@ require.config({
     "moment": "../js/moment.min",
     "models/time_span": "../js/models/time_span",
     "services/time_span_service": "../js/services/time_span_service",
+    "services/local_storage_time_span_service": "../js/services/local_storage_time_span_service",
     "presenters/time_presenter": "../js/presenters/time_presenter",
     "serializers/time_span_serializer": "../js/serializers/time_span_serializer",
     "util/util": "../js/util/util",
@@ -17,6 +18,7 @@ require.config({
 var specs = [
   "specs/time_span_specs",
   "specs/services/time_span_service_specs",
+  "specs/services/local_storage_time_span_service_specs",
   "specs/presenters/time_presenter_specs",
   "specs/serializers/time_span_serializer_spec",
   "specs/views/check_in_view_specs",

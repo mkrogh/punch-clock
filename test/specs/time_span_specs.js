@@ -55,6 +55,30 @@ define(["models/time_span", "moment"],function(TimeSpan, moment){
         expect(span.toString()).toBe("2:16");
       });
     });//END toString
+
+    describe("allows change tracking", function(){
+      var reciver;
+      beforeEach(function(){
+        reciver = jasmine.createSpy("reciver");
+      })
+      it("allows you to add an observer", function(){
+        span.trackChange(reciver);
+      });
+
+      it("notifies on start change", function(){
+        span.trackChange(reciver);
+        span.start(moment());
+        expect(reciver).toHaveBeenCalled();
+        expect(reciver).toHaveBeenCalledWith(span);
+      });
+
+      it("notifies on end change", function(){
+        span.trackChange(reciver);
+        span.checkOut();
+        expect(reciver).toHaveBeenCalled();
+        expect(reciver).toHaveBeenCalledWith(span);
+      });
+    });//END Change tracking
   });//END describe TimeSpan
  
 });
