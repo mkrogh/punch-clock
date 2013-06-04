@@ -13,6 +13,19 @@ define(["util/dom-creator","services/time_span_service","views/check_in_view"], 
       $test.appendChild($check_out);
     });
 
+    describe("on startup containing active time span", function(){
+      beforeEach(function(){
+        service = TimeSpanService.create();
+        service.addNew();
+        view = CheckInView.create(service, $test); 
+      });
+
+      it("check out button should be actvive", function(){
+        expect($check_in.className).toContain("hidden");
+        expect($check_out.className).not.toContain("hidden");
+      });
+    });//END starts with one
+
     describe("when clicking check-in", function(){
       var view;
       

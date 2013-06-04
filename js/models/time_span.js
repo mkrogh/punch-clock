@@ -1,7 +1,7 @@
 /**
  * Represents a TimeSpan.
  */
-define(["moment", "util/util"],function(moment,_){
+define(["moment", "util/util", "serializers/time_span_serializer"],function(moment,_, TimeSpanSerializer){
 
   var create = function(){
     var _start, _end;
@@ -26,7 +26,6 @@ define(["moment", "util/util"],function(moment,_){
       }
       return _end;
     }
-
 
     /**
      * Calculates the duration based on start and end time.
@@ -63,15 +62,24 @@ define(["moment", "util/util"],function(moment,_){
       checkout_observer.notify(this);
     }
 
+    var toJSON = function(){
+      return TimeSpanSerializer.serialize(this);
+    }
+
     return {
       start: start,
       end: end,
       checkOut: checkOut,
       duration: duration,
       toString: toString,
+      toJSON: toJSON,
       trackCheckin: checkin_observer.add,
       trackCheckout: checkout_observer.add,
-      trackChange: change_observer.add
+      trackChange: change_observer.add,
+      isCheckedOut: function(){
+        return !!end();
+      }
+
     }
   };
 

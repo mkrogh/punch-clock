@@ -37,6 +37,17 @@ define(["util/dom"], function($){
       checkin_btn.addEventListener("click",checkin); 
       checkout_btn.addEventListener("click",checkout); 
 
+      //Setup
+      var last = service.last();
+      if(last){
+        if(last.isCheckedOut()){
+          //DO nothing
+        }else{
+          addClass(checkin_btn,"hidden");
+          removeClass(checkout_btn,"hidden");
+          removeClass(checkout_btn,"disabled");
+        }
+      }
     }
   }
 });

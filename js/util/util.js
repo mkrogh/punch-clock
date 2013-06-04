@@ -11,6 +11,15 @@ define(function(){
       fn.call(elements[i],elements[i],i);
     }
   };
+
+  var map = function(elements, fn){
+    var result = [];
+    each(elements, function(element){
+      result.push(fn(element));
+    });
+    return result;
+  }
+
   var observable = function(){
     var observers = [];
     var addObserver = function(observer){
@@ -37,6 +46,7 @@ define(function(){
 
   return {
     each: each,
+    map: map,
     observable: observable
   };
 });

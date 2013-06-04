@@ -22,6 +22,25 @@ define(["util/dom-creator","services/time_span_service","views/status_view"], fu
       expect($test.textContent).toMatch(/\d{2}:\d{2} - \d{2}:\d{2} \(0:00\)/);
     });
 
+    describe("on startup containing time span", function(){
+      beforeEach(function(){
+        service = TimeSpanService.create();
+      });
+
+      it("shows check-in text if checked in", function(){
+        service.addNew();
+        view = StatusView.create(service, $test); 
+        expect($test.textContent).toContain("Check-in at");
+      });
+
+      it("shows last check-out if checked out", function(){
+        service.addNew();
+        service.last().checkOut();
+        view = StatusView.create(service, $test); 
+        expect($test.textContent).toMatch(/\d{2}:\d{2} - \d{2}:\d{2} \(0:00\)/);
+      });
+    });//END starts with one
+
     describe("when time passes", function(){
       beforeEach(function(){
         jasmine.Clock.useMock();

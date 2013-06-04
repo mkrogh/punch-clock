@@ -6,7 +6,8 @@
   %body
     .page
       .window
-        %h1 Punch clock
+        %h1
+          Punch clock
         %h3 keeping track
         %h2.punch-clock 
         .controls
@@ -14,5 +15,11 @@
             %i.icon-time
             Check in
           %a#check-out.button.disabled.hidden{href: "#check-out"} Check out
+      .config.window
+        %a#cleanup{href: "#cleanup"}
+          %i.icon-trash
+          clean up
+        .footer
+          %i.icon-chevron-down
 
     %script{:type => "text/javascript", :'data-main' => "js/defaults", :src => "js/require.js"}

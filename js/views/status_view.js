@@ -32,6 +32,16 @@ define(["util/dom","presenters/time_presenter"],function($,TimePresent){
       }
 
       service.track_add(track_adds);
+
+      //Setup
+      var last = service.last();
+      if(last){
+        if(last.isCheckedOut()){
+          handleCheckout(last);
+        }else{
+          track_adds(last);
+        }
+      }
     }
   }
 });

@@ -32,6 +32,17 @@ define(["models/time_span", "moment"],function(TimeSpan, moment){
       });
     });//END duration
 
+    describe("#isCheckedOut", function(){
+      it("should be false with no end", function(){
+        expect(span.isCheckedOut()).toBe(false);
+      });
+
+      it("should change with checkouts", function(){
+        expect(span.isCheckedOut()).toBe(false);
+        span.checkOut();
+        expect(span.isCheckedOut()).toBe(true);
+      });
+    }
 
     describe("when checking out", function(){
       it("should set the end", function(){
@@ -39,7 +50,7 @@ define(["models/time_span", "moment"],function(TimeSpan, moment){
         span.checkOut();
         expect(span.end()).toBeDefined();
       }); 
-    });//END manipulation
+    });//END checkout
 
 
     describe("#toString", function(){
@@ -79,6 +90,12 @@ define(["models/time_span", "moment"],function(TimeSpan, moment){
         expect(reciver).toHaveBeenCalledWith(span);
       });
     });//END Change tracking
+
+    describe("when serializing", function(){
+      it("#toJSON", function(){
+        expect(span.toJSON()).not.toBeUndefined();
+      });
+    });
   });//END describe TimeSpan
  
 });
