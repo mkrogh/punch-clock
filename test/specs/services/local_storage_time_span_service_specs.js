@@ -47,6 +47,15 @@ define(["services/local_storage_time_span_service","models/simple_storage","spec
 
         expect(storage.fetch("time_spans")).not.toEqual(before);
       });
+
+      it("tracks delete_all", function(){
+        service.addNew();
+        var before = storage.fetch("time_spans");
+
+        service.delete_all();
+
+        expect(storage.fetch("time_spans")).toBeUndefined();
+      });
     });//END changes
 
 

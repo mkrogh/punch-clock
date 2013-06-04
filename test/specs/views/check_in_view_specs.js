@@ -14,6 +14,7 @@ define(["util/dom-creator","services/time_span_service","views/check_in_view"], 
     });
 
     describe("on startup containing active time span", function(){
+      var view;
       beforeEach(function(){
         service = TimeSpanService.create();
         service.addNew();

@@ -7,6 +7,7 @@ define(["models/time_span", "util/util"],function(time_span, _){
     create: function(){
       var time_spans = [];
       var add_observer = _.observable();
+      var delete_observer = _.observable();
 
       /**
        * Gets the current number of elements in the serivce.
@@ -66,16 +67,23 @@ define(["models/time_span", "util/util"],function(time_span, _){
           return time_spans.splice(index, 1);
         }
       }
+
+      var delete_all = function(){
+        time_spans.splice(0,time_spans.length);
+        delete_observer.notify();
+      }
       
       return {
         all: time_spans,
         addNew: addNew,
         add: add,
         remove: remove,
+        delete_all: delete_all,
         first: first,
         last: last,
         count: count,
-        track_add: add_observer.add
+        track_add: add_observer.add,
+        track_delete: delete_observer.add,
       }
     }//END create
   }//END return

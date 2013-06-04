@@ -42,7 +42,7 @@ define(["models/time_span", "moment"],function(TimeSpan, moment){
         span.checkOut();
         expect(span.isCheckedOut()).toBe(true);
       });
-    }
+    });
 
     describe("when checking out", function(){
       it("should set the end", function(){

@@ -20,6 +20,10 @@ define(["services/time_span_service", "models/simple_storage", "serializers/time
           });
         });
 
+        simple_service.track_delete(function(){
+          _storage.reset();
+        });
+
       //Load from local_storage.
       var old_timespans = _storage.fetch("time_spans");
       if(old_timespans){

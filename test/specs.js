@@ -14,6 +14,7 @@ require.config({
     "util/dom-creator": "../js/util/dom-creator",
     "views/check_in_view": "../js/views/check_in_view",
     "views/status_view": "../js/views/status_view",
+    "views/cleanup_view": "../js/views/cleanup_view",
   }
 });
 
@@ -27,6 +28,7 @@ var specs = [
   "specs/serializers/time_span_deserializer_spec",
   "specs/views/check_in_view_specs",
   "specs/views/status_view_specs",
+  "specs/views/cleanup_view_specs",
   "specs/util/dom_creator_specs",
 ];
 require(specs,function(){
