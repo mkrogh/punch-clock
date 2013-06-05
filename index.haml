@@ -20,6 +20,9 @@
           %i.icon-trash
           %span.title clean up
         .footer
+          .created-at
+            %small
+              Released: #{Time.now.strftime("%F")} 
           %i.icon-chevron-down
 
     %script{:type => "text/javascript", :'data-main' => "js/defaults", :src => "js/require.js"}
