@@ -33,6 +33,13 @@ define(["util/dom","presenters/time_presenter"],function($,TimePresent){
 
       service.track_add(track_adds);
 
+      var handleCleanup = function(){
+        view.textContent="";
+        clearInterval(timer);
+      }
+
+      service.track_delete(handleCleanup);
+
       //Setup
       var last = service.last();
       if(last){

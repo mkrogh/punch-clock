@@ -56,6 +56,12 @@ define(["util/dom-creator","services/time_span_service","views/cleanup_view"], f
         }
         expect($title.textContent).toEqual("clean up (90)");
       });
+
+      it("updates count when cleaning up", function(){
+        service.addNew();
+        service.delete_all();
+        expect($title.textContent).toEqual("clean up"); 
+      });
     });//Adding timespans
 
     describe("on startup with saved time spans", function(){

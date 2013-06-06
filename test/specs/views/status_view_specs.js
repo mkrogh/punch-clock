@@ -15,6 +15,14 @@ define(["util/dom-creator","services/time_span_service","views/status_view"], fu
       expect($test.textContent).toContain("Check-in at");
     });
 
+    it("updates status when removing all time spans", function(){
+      service.addNew();
+      service.addNew();
+      expect($test.textContent).toContain("Check-in at");
+      service.delete_all();
+      expect($test.textContent).toEqual("");
+    });
+
     it("updates status when checkin-out a time span", function(){
       service.addNew();
       service.last().checkOut();
@@ -68,6 +76,18 @@ define(["util/dom-creator","services/time_span_service","views/status_view"], fu
           expect($test.textContent).toEqual(before);
         });
       });//END after checkout
+
+      describe("after delete all", function(){
+        it("should not update view", function(){
+          service.addNew();
+          service.first().start().subtract("10", "minutes");
+          service.delete_all();
+          jasmine.Clock.tick(30001);
+
+          expect($test.textContent).toEqual("");
+
+        });
+      });//END after delete all
     });//END time passes
   });
 });
