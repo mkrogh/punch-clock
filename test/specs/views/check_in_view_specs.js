@@ -81,6 +81,16 @@ define(["util/dom-creator","services/time_span_service","views/check_in_view"], 
         expect(service.last().end()).toBeDefined();
       });
 
-    });//END click checkin
+    });//END click checkout
+
+    describe("when all time spans are deleted from service", function(){
+      it("check in button should be actvive", function(){
+        view = CheckInView.create(service, $test);
+        $check_in.dispatchEvent(click_event);
+        service.delete_all();
+        expect($check_in.className).not.toContain("hidden");
+        expect($check_out.className).toContain("hidden");
+      });
+    });
   });
 });

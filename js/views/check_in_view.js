@@ -37,6 +37,12 @@ define(["util/dom"], function($){
       checkin_btn.addEventListener("click",checkin); 
       checkout_btn.addEventListener("click",checkout); 
 
+      var handleCleanup = function(){
+        removeClass(checkin_btn, "hidden");
+        addClass(checkout_btn, "hidden");
+      }
+      service.track_delete(handleCleanup);
+
       //Setup
       var last = service.last();
       if(last){
