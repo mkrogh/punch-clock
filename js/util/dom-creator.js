@@ -1,3 +1,14 @@
+/*
+ * Usage:
+ * DomCreator("#test img.some-class")
+ *   Creates a div with the id test
+ *    containing an image with the class .some-class.
+ *
+ * It allows you to create simple dom structures quickly. 
+ * Currently it only supports elements, classes and ids.
+ *
+ * The idea is somewhat inspired by http://en.wikipedia.org/wiki/Zen_Coding
+ */
 define(function(){
     var convert = function(list){
       var strElm = list.shift();
