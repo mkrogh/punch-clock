@@ -58,6 +58,23 @@ define(["services/local_storage_time_span_service","models/simple_storage","spec
       });
     });//END changes
 
+    describe("when importing from legacy storage", function(){
+      var service;
+      beforeEach(function(){
+        storage.save("time_spans", "[\"{\\\"time_span\\\":{\\\"start\\\":\\\"2013-06-09T16:00:17.527Z\\\",\\\"end\\\":\\\"2013-06-09T17:34:28.003Z\\\"}}\",\"{\\\"time_span\\\":{\\\"start\\\":\\\"2013-06-10T19:08:10.592Z\\\",\\\"end\\\":\\\"2013-06-10T19:08:13.289Z\\\"}}\"]");
+        service = LocalStorageTimeSpanService.create(storage);
+      });
+
+      it("contains two time spans", function(){
+        expect(service.count()).toBe(2);
+      });
+
+      it("tracks changes for older time spans", function(){
+        var before = storage.fetch("time_spans");
+        service.last().checkOut();
+        expect(storage.fetch("time_spans")).not.toEqual(before);
+      });
+    });//END import from legacy storage
 
     describe("when importing from storage", function(){
       var service;

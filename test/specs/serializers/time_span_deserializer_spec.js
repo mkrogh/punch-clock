@@ -21,8 +21,7 @@ define(["models/time_span","moment","serializers/time_span_serializer","serializ
     
     describe("#from_object", function(){
       beforeEach(function(){
-        var serialized= TimeSpanSerializer.serialize(time_span);
-        as_object = JSON.parse(serialized);
+        var as_object = TimeSpanSerializer.to_obj(time_span);
         deserialized = TimeSpanDeserializer.from_object(as_object);
       });
       it("start should be the same", function(){

@@ -63,7 +63,7 @@ define(["moment", "util/util", "serializers/time_span_serializer"],function(mome
     }
 
     var toJSON = function(){
-      return TimeSpanSerializer.serialize(this);
+      return TimeSpanSerializer.to_obj(this);
     }
 
     return {

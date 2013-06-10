@@ -25,6 +25,26 @@ define(["models/time_span","moment","serializers/time_span_serializer"], functio
           expect(object.time_span.start).toEqual("2013-05-28T13:20:00.000Z");
           expect(object.time_span.end).toEqual("2013-05-29T13:20:00.000Z");
         });
+
+        describe("when converting to object", function(){
+          var obj;
+          beforeEach(function(){
+            obj = TimeSpanSerializer.to_obj(time_span);
+          });
+
+          it("creates a time span object", function(){
+            expect(obj.time_span).toBeDefined();
+          });
+
+          it("stores start date", function(){
+            expect(obj.time_span.start).toEqual("2013-05-28T13:20:00.000Z");
+          });
+          
+          it("stores end date", function(){
+            expect(obj.time_span.end).toEqual("2013-05-29T13:20:00.000Z");
+          });
+        });//END to_obj
+
       });//END full
 
       describe("when serialing with only start", function(){
@@ -34,7 +54,7 @@ define(["models/time_span","moment","serializers/time_span_serializer"], functio
           expect(object.time_span).toBeDefined();
         });
 
-      });//END full
+      });//END only start
   });//END TimeSpanSerializer
 
 });

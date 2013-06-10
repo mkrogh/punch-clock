@@ -29,7 +29,11 @@ define(["services/time_span_service", "models/simple_storage", "serializers/time
       if(old_timespans){
         var time_spans = JSON.parse(old_timespans);
         _.each(time_spans, function(time_span){
-          simple_service.add(TimeSpanDeserializer.deserialize(time_span));
+          if(typeof time_span === "string"){
+            simple_service.add(TimeSpanDeserializer.deserialize(time_span));
+          }else{
+            simple_service.add(TimeSpanDeserializer.from_object(time_span));
+          }
         });
       }
 
