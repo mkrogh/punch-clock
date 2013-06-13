@@ -1,7 +1,7 @@
 /**
  * Represents a TimeSpan.
  */
-define(["moment", "util/util", "serializers/time_span_serializer"],function(moment,_, TimeSpanSerializer){
+define(["moment", "util/util", "serializers/time_span_serializer", "presenters/duration_presenter"],function(moment,_, TimeSpanSerializer, DurationPresenter){
 
   var create = function(){
     var _start, _end;
@@ -43,17 +43,7 @@ define(["moment", "util/util", "serializers/time_span_serializer"],function(mome
      * E.g: "1:00"
      */
     var toString = function(){
-      var diff = duration();
-      var result = "";
-      result += diff.hours();
-      result += ":";
-      if(diff.minutes() > 9){
-        result += diff.minutes();
-      }else{
-        result += "0"+diff.minutes();
-      }
-
-      return result;
+      return DurationPresenter.present(duration());
     }
 
     var checkOut = function(time_stamp){

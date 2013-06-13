@@ -54,12 +54,6 @@ define(["models/time_span", "moment"],function(TimeSpan, moment){
 
 
     describe("#toString", function(){
-      it("reports 1 hour as 1:00", function(){
-        span.start(moment("2013-05-12 15:30:30", "YYYY-MM-DD HH:mm:ss"));
-        span.end(moment("2013-05-12 16:30:40", "YYYY-MM-DD HH:mm:ss"));
-        expect(span.toString()).toBe("1:00");
-      });
-
       it("reports 2 hour 16 minutes as 2:16", function(){
         span.start(moment("2013-05-12 15:30:30", "YYYY-MM-DD HH:mm:ss"));
         span.end(moment("2013-05-12 17:46:40", "YYYY-MM-DD HH:mm:ss"));
