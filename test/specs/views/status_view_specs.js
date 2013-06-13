@@ -65,6 +65,18 @@ define(["util/dom-creator","services/time_span_service","views/status_view"], fu
         expect($test.textContent).not.toEqual(before);
       });
 
+      it("should only track last added", function(){
+        service.addNew();
+        service.addNew();
+        
+        var before = $test.textContent;
+        //Cheating
+        service.first().start().subtract("10", "minutes");
+        jasmine.Clock.tick(30001);
+
+        expect($test.textContent).toEqual(before);
+      });
+
       describe("after check-out", function(){
         it("should not update view", function(){
           service.addNew();
@@ -75,6 +87,7 @@ define(["util/dom-creator","services/time_span_service","views/status_view"], fu
 
           expect($test.textContent).toEqual(before);
         });
+
       });//END after checkout
 
       describe("after delete all", function(){
