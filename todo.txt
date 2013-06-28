@@ -1,0 +1,9 @@
+* Estimated space left on client side?
+  * (5*1024*1024) - (localStorage.time_spans.length*2) 
+    //two bytes per char
+* History view
+* Editing (checkin/out times)
+* Deleting single entries
+* Add categories/tags e.g. work, training
+* Backend - or google drive or gists or what ever.
+* Multi browser checkins
