@@ -3,4 +3,4 @@ source "https://rubygems.org"
 
 # gem "rails"
 gem "thin"
-gem "capistrano"
+gem 'capistrano', '~>2.15'
