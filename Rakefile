@@ -4,7 +4,7 @@ require "rake"
 task :s => :server
 
 task :server do
-  system "thin -R server.ru start"
+  system "server.sh"
 end
 
 task :dist => ["distribute:all"]  do 
